@@ -7,6 +7,7 @@ namespace Logistic_Regression_From_Scratch
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Row row = new Row();
         }
     }
 }
