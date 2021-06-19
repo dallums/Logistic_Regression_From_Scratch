@@ -24,7 +24,7 @@ namespace Logistic_Regression_From_Scratch
                 "DiabeticOrNot"
             };
             CSVReader csvReaderGeneralized = new CSVReader(path: pathToPimaDataset,
-                numberOfColumns: 9,
+                numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
         }
     }
