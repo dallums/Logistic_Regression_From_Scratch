@@ -36,25 +36,25 @@ namespace Logistic_Regression_From_Scratch
             if (R1.numColumns != R2.numRows)
             {
                 // create custom wrong dimension exception to be cleaner
-                Console.WriteLine("Impossible: dimensions are not equal");
+                Console.WriteLine($"Impossible: dimensions are not equal with {R1.numColumns} columns and {R2.numRows} rows");
                 return null;
             }
             decimal result = 0m;
             
             for (int i = 0; i < R1.numColumns; i++)
             {
+                // TODO: fix this since [0][i] or [i][0] as function of if being passed as row after being converted or column
                 result += (R1.Data[0][i] * R2.Data[i][0]);
             }
 
             return result;
         }
         
-        public Matrix multilpyMatrices(Matrix M1, Matrix M2)
+        public static Matrix multiplyMatrices(Matrix M1, Matrix M2)
         {
-            Matrix resultMatrix = new Matrix(M1.numRows, M2.numColumns, new List<List<decimal>>());
+            Matrix resultMatrix = new Matrix(M1.numRows, M2.numColumns);
             for (int rowNum = 0; rowNum < resultMatrix.numRows; rowNum++)
             {
-
                 Matrix rowRowNumFromM1 = new Matrix(1, M1.numColumns, new List<List<decimal>> {M1.Data[rowNum]});
                 for (int colNum = 0; colNum < resultMatrix.numColumns; colNum++)
                 {

@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Logistic_Regression_From_Scratch
@@ -15,6 +16,22 @@ namespace Logistic_Regression_From_Scratch
             numColumns = 0;
             Data = new List<List<decimal>>();
         }
+
+        public Matrix(int rows, int columns)
+        {
+            numRows = rows;
+            numColumns = columns;
+            List<decimal> blankRow = new List<decimal>(numColumns);
+            int cap = blankRow.Capacity;
+            List<List<decimal>> data = new List<List<decimal>>(numRows);
+
+            for (int rowNum = 0; rowNum < rows; rowNum++)
+            {
+                data.Add(blankRow);
+            }
+            Data = data;
+        }
+        
         public Matrix(int rows, int columns, List<List<decimal>> data)
         {
             numRows = rows;
