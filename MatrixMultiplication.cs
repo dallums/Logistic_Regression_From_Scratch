@@ -9,9 +9,8 @@ namespace Logistic_Regression_From_Scratch
     {
         public MatrixMultiplication() {}
         
-        public bool isMultiplicationPossible(Matrix M1, Matrix M2)
+        public static bool isMultiplicationPossible(Matrix M1, Matrix M2)
         {
-            // check dimensions
             int M1_columns = M1.numColumns;
             int M2_rows = M2.numRows;
             if(M1_columns == M2_rows)
@@ -81,7 +80,6 @@ namespace Logistic_Regression_From_Scratch
                 {
                     List<decimal> colColNumFromM2 = getColumnAsRow(M2, colNum);
                     decimal? entryToAdd = dotProduct(rowRowNumFromM1, colColNumFromM2); 
-                    Console.WriteLine($"Adding {entryToAdd} to row {rowNum} and column {colNum}");
                     resultMatrix.Data[rowNum][colNum] = (decimal) entryToAdd;
                 }
             }

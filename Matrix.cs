@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
@@ -21,12 +22,11 @@ namespace Logistic_Regression_From_Scratch
         {
             numRows = rows;
             numColumns = columns;
-            List<decimal> blankRow = new List<decimal>(new decimal[numColumns]);
             List<List<decimal>> data = new List<List<decimal>>(numRows);
 
             for (int rowNum = 0; rowNum < rows; rowNum++)
             {
-                data.Add(blankRow);
+                data.Add(new List<decimal>(new decimal[numColumns])); 
             }
             Data = data;
         }
@@ -37,6 +37,15 @@ namespace Logistic_Regression_From_Scratch
             numColumns = columns;
             Data = data;
 
+        }
+
+        public static void printMatrix(Matrix M)
+        {
+            for (int rowNum = 0; rowNum < M.numRows; rowNum++)
+            {
+                Console.WriteLine("[ " + String.Join(" ", M.Data[rowNum]) + " ]");
+            }
+            Console.WriteLine("");
         }
     }
 }
