@@ -35,16 +35,37 @@ namespace Logistic_Regression_From_Scratch
         {
             if (R1.numColumns != R2.numRows)
             {
-                // create custom wrong dimension exception to be cleaner
+                // TODO: create custom wrong dimension exception to be cleaner
                 Console.WriteLine($"Impossible: dimensions are not equal with {R1.numColumns} columns and {R2.numRows} rows");
                 return null;
             }
             decimal result = 0m;
+
+            List<decimal> R2asRow = getColumnAsRow(R2, 0);
             
             for (int i = 0; i < R1.numColumns; i++)
             {
-                // TODO: fix this since [0][i] or [i][0] as function of if being passed as row after being converted or column
-                result += (R1.Data[0][i] * R2.Data[i][0]);
+                // we do this because the row has been transposed
+                result += (R1.Data[0][i] * R2asRow[i]);
+            }
+
+            return result;
+        }
+        
+        // Overloading to use in matrix multiplication when just giving list of decimals
+        public static decimal? dotProduct(List<decimal> R1, List<decimal> R2)
+        {
+            if (R1.Count != R2.Count)
+            {
+                // TODO: create custom wrong dimension exception to be cleaner
+                Console.WriteLine($"Impossible: dimensions are not equal with {R1.Count} and {R2.Count}");
+                return null;
+            }
+            decimal result = 0m;
+
+            for (int i = 0; i < R1.Count; i++)
+            {
+                result += (R1[i] * R2[i]);
             }
 
             return result;
@@ -55,11 +76,12 @@ namespace Logistic_Regression_From_Scratch
             Matrix resultMatrix = new Matrix(M1.numRows, M2.numColumns);
             for (int rowNum = 0; rowNum < resultMatrix.numRows; rowNum++)
             {
-                Matrix rowRowNumFromM1 = new Matrix(1, M1.numColumns, new List<List<decimal>> {M1.Data[rowNum]});
+                List<decimal> rowRowNumFromM1 = M1.Data[rowNum];
                 for (int colNum = 0; colNum < resultMatrix.numColumns; colNum++)
                 {
-                    Matrix colColNumFromM2 = new Matrix(M2.numRows, 1, new List<List<decimal>> {getColumnAsRow(M2, colNum)});
-                    decimal? entryToAdd = dotProduct(rowRowNumFromM1, colColNumFromM2); // rowNum row dot colNum col;
+                    List<decimal> colColNumFromM2 = getColumnAsRow(M2, colNum);
+                    decimal? entryToAdd = dotProduct(rowRowNumFromM1, colColNumFromM2); 
+                    Console.WriteLine($"Adding {entryToAdd} to row {rowNum} and column {colNum}");
                     resultMatrix.Data[rowNum][colNum] = (decimal) entryToAdd;
                 }
             }

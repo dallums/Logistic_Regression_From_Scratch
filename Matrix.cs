@@ -21,8 +21,7 @@ namespace Logistic_Regression_From_Scratch
         {
             numRows = rows;
             numColumns = columns;
-            List<decimal> blankRow = new List<decimal>(numColumns);
-            int cap = blankRow.Capacity;
+            List<decimal> blankRow = new List<decimal>(new decimal[numColumns]);
             List<List<decimal>> data = new List<List<decimal>>(numRows);
 
             for (int rowNum = 0; rowNum < rows; rowNum++)

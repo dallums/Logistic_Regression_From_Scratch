@@ -4,7 +4,7 @@ using static System.Console;
 // TODO: if the matrix class is well written, this class is completely redundant since a row is a Nx0 matrix
 namespace Logistic_Regression_From_Scratch
 {
-    public class Row
+    public class Row : Matrix
     {
         public int XDim { get; set; }
         public List<decimal> Data { get; set; }
