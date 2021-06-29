@@ -21,5 +21,11 @@ namespace Logistic_Regression_From_Scratch
             XDim = length;
             Data = data;
         }
+        
+        public static void printRow(Row R)
+        {
+            Console.WriteLine("[ " + String.Join(" ", R.Data) + " ]");
+            Console.WriteLine("");
+        }
     }
 }

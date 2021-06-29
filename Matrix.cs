@@ -47,5 +47,28 @@ namespace Logistic_Regression_From_Scratch
             }
             Console.WriteLine("");
         }
+
+        public static Matrix addColumn(Matrix M)
+        {
+            //TODO: fill in
+            return M;
+        }
+
+        public static Matrix addRow(Matrix M, Row R)
+        {
+            // TODO: test to confirm works
+            M.Data.Add(R.Data);
+            return M;
+        }
+
+        public static List<decimal> getColumn(Matrix M, int columnNumber)
+        {
+            List<decimal> resultsList = new List<decimal>(M.numRows);
+            for (int rowNum = 0; rowNum < M.numRows; rowNum++)
+            {
+                resultsList.Add(M.Data[rowNum][columnNumber]);
+            }
+            return resultsList;
+        }
     }
 }
