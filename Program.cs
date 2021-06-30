@@ -20,7 +20,7 @@ namespace Logistic_Regression_From_Scratch
                 "Age",
                 "DiabeticOrNot"
             };
-            CSVReader csvReaderGeneralized = new CSVReader(path: pathToPimaDataset,
+            Matrix CSVasMatrix = CSVReader.ReadCSV(path: pathToPimaDataset,
                 numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
             

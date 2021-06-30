@@ -7,7 +7,7 @@ namespace Logistic_Regression_From_Scratch
 {
     public class CSVReader
     {
-        public CSVReader(string path, int numberOfColumns, string[] columnNames)
+        public static Matrix ReadCSV(string path, int numberOfColumns, string[] columnNames)
         {
             IDictionary<int, string> ColumnNames = new Dictionary<int, string>();
             IDictionary<int, List<double>> ColumnData = new Dictionary<int, List<double>>();
@@ -37,7 +37,7 @@ namespace Logistic_Regression_From_Scratch
             }
             Matrix resultsMatrix = new Matrix(rows: rowCounter, columns: numberOfColumns, data: allData);
             List<decimal> lastColumn = Matrix.getColumn(M:resultsMatrix, columnNumber:8);
-            //TODO: method to actually return the results matrix
+            return resultsMatrix;
         }
     }
 }
