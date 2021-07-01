@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistic_Regression_From_Scratch", "Logistic_Regression_From_Scratch.csproj", "{1DDA1EC1-FC88-456C-BC82-D734E821F141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logistic_Regression_UTests", "Logistic_Regression_UTests\Logistic_Regression_UTests.csproj", "{EBDAD2E7-803C-4226-8FDC-137366BF1F80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{2CE62351-1115-4984-A2DF-4F6A29A24DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{1DDA1EC1-FC88-456C-BC82-D734E821F141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DDA1EC1-FC88-456C-BC82-D734E821F141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DDA1EC1-FC88-456C-BC82-D734E821F141}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBDAD2E7-803C-4226-8FDC-137366BF1F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBDAD2E7-803C-4226-8FDC-137366BF1F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBDAD2E7-803C-4226-8FDC-137366BF1F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBDAD2E7-803C-4226-8FDC-137366BF1F80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE62351-1115-4984-A2DF-4F6A29A24DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE62351-1115-4984-A2DF-4F6A29A24DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE62351-1115-4984-A2DF-4F6A29A24DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE62351-1115-4984-A2DF-4F6A29A24DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

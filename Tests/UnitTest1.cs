@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Logistic_Regression_UTests
+namespace Tests
 {
     public class Tests
     {
