@@ -9,5 +9,10 @@ namespace Logistic_Regression_From_Scratch
         {
             return 0m;
         }
+
+        public static decimal logLoss(decimal prediction, decimal actual)
+        {
+            return 0m;
+        }
     }
 }
