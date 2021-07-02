@@ -1,3 +1,5 @@
+using System;
+
 namespace Logistic_Regression_From_Scratch
 {
     public class Prediction
@@ -10,9 +12,10 @@ namespace Logistic_Regression_From_Scratch
             return 0m;
         }
 
-        public static decimal logLoss(decimal prediction, decimal actual)
+        public static double logLoss(double prediction, double actual)
         {
-            return 0m;
+            double logLossValue = Math.Log(prediction);
+            return 0;
         }
     }
 }
