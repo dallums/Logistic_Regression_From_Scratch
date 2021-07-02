@@ -14,8 +14,10 @@ namespace Logistic_Regression_From_Scratch
 
         public static double logLoss(double prediction, double actual)
         {
-            double logLossValue = Math.Log(prediction);
-            return 0;
+            double firstSummand = -(actual * Math.Log(prediction));
+            double secondSummand = (1 - actual) * (Math.Log(1 - prediction));
+            double logLossValue = firstSummand + secondSummand;
+            return logLossValue;
         }
     }
 }
