@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Logistic_Regression_From_Scratch.UTests
 {
-    public class Tests
+    public class Prediction_UTests
     {
         [SetUp]
         public void Setup()
