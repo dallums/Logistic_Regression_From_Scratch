@@ -36,7 +36,39 @@ namespace Logistic_Regression_From_Scratch
             numRows = rows;
             numColumns = columns;
             Data = data;
+        }
 
+        public static Matrix getMatrixOfZeros(int rows, int columns)
+        {
+            Matrix M = new Matrix();
+            M.numRows = rows;
+            M.numColumns = columns;
+            List<List<decimal>> data = new List<List<decimal>>(M.numRows);
+
+            for (int rowNum = 0; rowNum < rows; rowNum++)
+            {
+                data.Add(new List<decimal>(new decimal[M.numColumns]));
+
+                // TODO: find a better way to do this
+                for (int colNum = 0; colNum < columns; colNum++)
+                {
+                    data[rowNum].Add(0);
+                }
+            }
+            M.Data = data;
+            return M;
+        }
+
+        public static Matrix getWeightMatrix(int rows, int columns, List<List<decimal>> probabilities)
+        {
+            // TODO: fill in
+            return new Matrix();
+        }
+
+        public static Matrix getTrainingData(Matrix X)
+        {
+            // TODO: fill in (just remove last column)
+            return X;
         }
 
         public static void printMatrix(Matrix M)

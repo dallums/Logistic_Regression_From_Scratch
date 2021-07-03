@@ -3,11 +3,8 @@ using System;
 namespace Logistic_Regression_From_Scratch
 {
     public class Prediction
-    {
-        // TODO: build out. Idea is make single prediction from row and model (another row)
-        public Prediction() {}
-
-        public static  decimal makePrediction()
+    { 
+        public static  decimal makePrediction(Matrix model, Matrix inputData)
         {
             return 0m;
         }
@@ -18,6 +15,11 @@ namespace Logistic_Regression_From_Scratch
             double secondSummand = (1 - actual) * (Math.Log(1 - prediction));
             double logLossValue = firstSummand + secondSummand;
             return logLossValue;
+        }
+
+        public static double sigmoid(double x)
+        {
+            return 1 / (1 + Math.Exp(-x));
         }
     }
 }

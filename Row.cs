@@ -7,7 +7,7 @@ namespace Logistic_Regression_From_Scratch
     public class Row : Matrix
     {
         public int XDim { get; set; }
-        public List<decimal> Data { get; set; }
+        public new List<decimal> Data { get; set; }
 
         public Row()
         {

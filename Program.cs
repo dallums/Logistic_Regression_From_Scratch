@@ -23,6 +23,7 @@ namespace Logistic_Regression_From_Scratch
             Matrix CSVasMatrix = CSVReader.ReadCSV(path: pathToPimaDataset,
                 numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
+            Matrix InitialWeights = Matrix.getMatrixOfZeros(rows: 1, columns: CSVasMatrix.numColumns);
         }
     }
 }

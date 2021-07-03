@@ -33,13 +33,9 @@ namespace Logistic_Regression_From_Scratch
         public static decimal? dotProduct(Matrix R1, Matrix R2)
         {
             if (R1.numColumns != R2.numRows)
-            {
-                // TODO: create custom wrong dimension exception to be cleaner
-                Console.WriteLine($"Impossible: dimensions are not equal with {R1.numColumns} columns and {R2.numRows} rows");
-                return null;
-            }
+                throw new Exception("Dimensions do not match");
+            
             decimal result = 0m;
-
             List<decimal> R2asRow = getColumnAsRow(R2, 0);
             
             for (int i = 0; i < R1.numColumns; i++)
@@ -55,18 +51,13 @@ namespace Logistic_Regression_From_Scratch
         public static decimal? dotProduct(List<decimal> R1, List<decimal> R2)
         {
             if (R1.Count != R2.Count)
-            {
-                // TODO: create custom wrong dimension exception to be cleaner
-                Console.WriteLine($"Impossible: dimensions are not equal with {R1.Count} and {R2.Count}");
-                return null;
-            }
+                throw new Exception("Dimensions do not match");
+            
             decimal result = 0m;
-
             for (int i = 0; i < R1.Count; i++)
             {
                 result += (R1[i] * R2[i]);
             }
-
             return result;
         }
         
@@ -84,6 +75,25 @@ namespace Logistic_Regression_From_Scratch
                 }
             }
             return resultMatrix;
+        }
+
+        public static Matrix addMatrices(Matrix M1, Matrix M2, bool subtract)
+        {
+            // TODO: fill in
+            Matrix resultMatrix = new Matrix(M1.numRows, M2.numColumns);
+            return resultMatrix;
+        }
+
+        public static Matrix getInverse(Matrix M)
+        {
+            // TODO: adapt this: https://docs.microsoft.com/en-us/archive/msdn-magazine/2016/july/test-run-matrix-inversion-using-csharp
+            return M;
+        }
+
+        public static Matrix getTranspose(Matrix M)
+        {
+            // TODO: fill in
+            return M;
         }
     }
 }
