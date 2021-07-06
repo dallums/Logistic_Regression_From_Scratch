@@ -12,10 +12,10 @@ namespace Logistic_Regression_From_Scratch.UTests
         [Test]
         public void LogLossShouldWork()
         {
-            double prediction = .995;
-            double actual = 1.0;
-            double logLossValue = Prediction.logLoss(prediction, actual);
-            Assert.AreEqual(logLossValue, 0.0050125418235442863d);
+            decimal prediction = .995m;
+            decimal actual = 1.0m;
+            decimal logLossValue = Prediction.logLoss(prediction, actual);
+            Assert.AreEqual(logLossValue, 0.00501254182354429m);
         }
     }
 }

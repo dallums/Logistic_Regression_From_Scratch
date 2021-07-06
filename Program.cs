@@ -24,6 +24,17 @@ namespace Logistic_Regression_From_Scratch
                 numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
             Matrix InitialWeights = Matrix.getMatrixOfZeros(rows: 1, columns: CSVasMatrix.numColumns);
+            
+            decimal learningRate = .05m;
+            int maxIterations = 100;
+            
+            Training startTraining = new Training();
+            startTraining.iterationNumber = 0;
+            
+            while (startTraining.iterationNumber < maxIterations)
+            {
+                Matrix model = startTraining.runIteration(currentModel: InitialWeights, trainingData: CSVasMatrix, learningRate: learningRate);
+            }
         }
     }
 }
