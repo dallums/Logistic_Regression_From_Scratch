@@ -36,7 +36,6 @@ namespace Logistic_Regression_From_Scratch
                 }
             }
             Matrix resultsMatrix = new Matrix(rows: rowCounter, columns: numberOfColumns, data: allData);
-            List<decimal> lastColumn = Matrix.getColumn(M:resultsMatrix, columnNumber:8);
             return resultsMatrix;
         }
     }

@@ -9,7 +9,7 @@ namespace Logistic_Regression_From_Scratch
             return sigmoid(MatrixMultiplication.multiplyMatrices(inputData, model).Data[0][0]);
         }
 
-        public static Matrix makePredictions(Matrix model, Matrix inputData)
+        public static Matrix makePredictions(Matrix inputData, Matrix model)
         {
             Matrix predictions = MatrixMultiplication.multiplyMatrices(inputData, model);
             for (int rowNum = 0; rowNum < model.numRows; rowNum++)

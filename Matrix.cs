@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Logistic_Regression_From_Scratch
 {
@@ -67,8 +68,17 @@ namespace Logistic_Regression_From_Scratch
 
         public static Matrix getTrainingData(Matrix X)
         {
-            // TODO: fill in (just remove last column)
-            return X;
+            // this doesn't seem to be making a deep copy somehow and is altering the data
+            // of X
+            // TODO: fix
+            List<List<decimal>> copyOfX = X.Data.ConvertAll(p=>p);
+            Matrix trainingDataFromX = new Matrix(rows: X.numRows, columns: X.numColumns, data: copyOfX);
+            int lastColumnIndex = trainingDataFromX.numColumns - 1;
+            for (int rowNum = 0; rowNum < trainingDataFromX.numRows; rowNum++)
+            {
+                copyOfX[rowNum].RemoveAt(lastColumnIndex);
+            }
+            return trainingDataFromX;
         }
 
         public static void printMatrix(Matrix M)
@@ -80,26 +90,20 @@ namespace Logistic_Regression_From_Scratch
             Console.WriteLine("");
         }
 
-        public static Matrix addColumn(Matrix M)
-        {
-            //TODO: fill in
-            return M;
-        }
-
-        public static Matrix addRow(Matrix M, Row R)
-        {
-            // TODO: test to confirm works
-            M.Data.Add(R.Data);
-            return M;
-        }
-
         public static List<decimal> getColumn(Matrix M, int columnNumber)
         {
+            Console.WriteLine("Beginning");
+            printMatrix(M);
             List<decimal> resultsList = new List<decimal>(M.numRows);
             for (int rowNum = 0; rowNum < M.numRows; rowNum++)
             {
-                resultsList.Add(M.Data[rowNum][columnNumber]);
+                Console.WriteLine("Trying " + rowNum + " at " + columnNumber);
+                Console.WriteLine("Adding " + M.Data[rowNum][columnNumber]+ " at row number " + rowNum);
+                //resultsList.Add(M.Data[rowNum][columnNumber]);
+                resultsList.Add(0);
+                Console.WriteLine("Added");
             }
+            Console.WriteLine("Done");
             return resultsList;
         }
     }
