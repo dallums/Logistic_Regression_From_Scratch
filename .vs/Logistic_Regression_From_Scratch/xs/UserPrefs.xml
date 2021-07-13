@@ -1,0 +1,44 @@
+﻿<Properties StartupConfiguration="{1DDA1EC1-FC88-456C-BC82-D734E821F141}|Default">
+  <MonoDevelop.Ide.ItemProperties.Logistic__Regression__From__Scratch PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="Program.cs" Line="35" Column="1" NotebookId="1" />
+      <File FileName="MatrixMultiplication.cs" Line="56" Column="43" NotebookId="1" />
+    </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="0" Y="110" Width="1920" Height="1027">
+        <Files>
+          <File FileName="Prediction.cs" Line="31" Column="1" />
+          <File FileName="Training.cs" />
+          <File FileName="Matrix.cs" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Logistic_Regression_From_Scratch" expanded="True">
+            <Node name="Logistic_Regression_From_Scratch" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+            <Node name="Logistic_Regression_From_Scratch.UTests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Logistic_Regression_From_Scratch" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

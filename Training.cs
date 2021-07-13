@@ -7,32 +7,34 @@ namespace Logistic_Regression_From_Scratch
     {
         public int iterationNumber { get; set; }
 
-        public Matrix runIteration(Matrix currentModel, Matrix trainingData, decimal learningRate)
+        public static Matrix getYData(Matrix trainingData)
+        {
+            List<decimal> yData = Matrix.getColumn(trainingData, trainingData.numColumns - 1);
+            List<List<decimal>> yDataForMatrix = new List<List<decimal>>(1);
+            yDataForMatrix.Add(yData);
+            Matrix yAsRow = new Matrix(1, trainingData.numRows, yDataForMatrix);
+            Matrix y = MatrixMultiplication.getTranspose(yAsRow);
+            return y;
+        }
+
+        public Matrix runIteration(Matrix currentModel, Matrix trainingData, decimal learningRate, Matrix X, Matrix y)
         {
             /*
              * 1. Make predictions, i.e., one iteration
              * 2. Adjust each weight w_i -> w_i - alpha * partial L w.r.t w_i
              * 3. return new model
              */
-            // TODO: get this to work and make method
-            // wrangle training data
-            Matrix.printMatrix(trainingData);
-            Matrix X = Matrix.getTrainingData(trainingData);
-            Console.WriteLine("Got X"); // issue is this is still impacting trainingData somehow
-            Matrix.printMatrix(trainingData);
-            List<decimal> yData = Matrix.getColumn(trainingData, trainingData.numColumns - 1);
-            List<List<decimal>> yDataForMatrix = new List<List<decimal>>(1);
-            yDataForMatrix.Add(yData);
-            Matrix yAsRow = new Matrix(1, trainingData.numRows, yDataForMatrix);
-            Matrix y = MatrixMultiplication.getTranspose(yAsRow);
-            
+
             // get predictions
+            Console.Write("Making predicitons...");
             Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel);
+            Console.WriteLine("Predictions done");
             
             // compute gradient = features * (predictions - actuals)
             Matrix predictionsMinusActuals = MatrixMultiplication.addMatrices(predictions, y, true);
             Matrix predictionsMinusActualsT = MatrixMultiplication.getTranspose(predictionsMinusActuals);
-            decimal? gradient = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], yDataForMatrix[0]);
+            Console.WriteLine("Trying to compute gradient");
+            decimal? gradient = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], y.Data[0]);
 
             // adjust weights
             for (int rowNum = 0; rowNum < currentModel.numRows; rowNum++)

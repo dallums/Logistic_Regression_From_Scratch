@@ -32,6 +32,7 @@ namespace Logistic_Regression_From_Scratch
         
         public static decimal? dotProduct(Matrix R1, Matrix R2)
         {
+            Console.WriteLine("Trying matrix dot product...");
             if (R1.numColumns != R2.numRows)
                 throw new Exception("Dimensions do not match");
             
@@ -51,8 +52,9 @@ namespace Logistic_Regression_From_Scratch
         public static decimal? dotProduct(List<decimal> R1, List<decimal> R2)
         {
             if (R1.Count != R2.Count)
-                throw new Exception("Dimensions do not match");
-            
+                Console.WriteLine($"{R1.Count} does not equal {R2.Count}");
+                //throw new Exception($"Dimensions do not match: {R1.Count} versus {R2.Count}");
+
             decimal result = 0m;
             for (int i = 0; i < R1.Count; i++)
             {

@@ -23,17 +23,19 @@ namespace Logistic_Regression_From_Scratch
             Matrix CSVasMatrix = CSVReader.ReadCSV(path: pathToPimaDataset,
                 numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
-            Matrix InitialWeights = Matrix.getMatrixOfZeros(rows: 1, columns: CSVasMatrix.numColumns);
-            
+            Matrix InitialWeights = Matrix.getMatrixOfZeros(rows: CSVasMatrix.numColumns-1, columns: 1);
+
             decimal learningRate = .05m;
             int maxIterations = 100;
             
             Training startTraining = new Training();
             startTraining.iterationNumber = 0;
-            
+            Matrix X = Matrix.getTrainingData(CSVasMatrix);
+            Matrix y = Training.getYData(CSVasMatrix);
+
             while (startTraining.iterationNumber < maxIterations)
             {
-                Matrix model = startTraining.runIteration(currentModel: InitialWeights, trainingData: CSVasMatrix, learningRate: learningRate);
+                Matrix model = startTraining.runIteration(currentModel: InitialWeights, trainingData: CSVasMatrix, learningRate: learningRate, X: X, y: y);
             }
         }
     }

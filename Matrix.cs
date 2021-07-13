@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Logistic_Regression_From_Scratch
 {
@@ -39,6 +41,15 @@ namespace Logistic_Regression_From_Scratch
             Data = data;
         }
 
+        public static List<T> CloneList<T>(List<T> oldList)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream stream = new MemoryStream();
+            formatter.Serialize(stream, oldList);
+            stream.Position = 0;
+            return (List<T>)formatter.Deserialize(stream);
+        }
+
         public static Matrix getMatrixOfZeros(int rows, int columns)
         {
             Matrix M = new Matrix();
@@ -49,8 +60,6 @@ namespace Logistic_Regression_From_Scratch
             for (int rowNum = 0; rowNum < rows; rowNum++)
             {
                 data.Add(new List<decimal>(new decimal[M.numColumns]));
-
-                // TODO: find a better way to do this
                 for (int colNum = 0; colNum < columns; colNum++)
                 {
                     data[rowNum].Add(0);
@@ -68,10 +77,7 @@ namespace Logistic_Regression_From_Scratch
 
         public static Matrix getTrainingData(Matrix X)
         {
-            // this doesn't seem to be making a deep copy somehow and is altering the data
-            // of X
-            // TODO: fix
-            List<List<decimal>> copyOfX = X.Data.ConvertAll(p=>p);
+            List<List<decimal>> copyOfX = CloneList(X.Data);
             Matrix trainingDataFromX = new Matrix(rows: X.numRows, columns: X.numColumns, data: copyOfX);
             int lastColumnIndex = trainingDataFromX.numColumns - 1;
             for (int rowNum = 0; rowNum < trainingDataFromX.numRows; rowNum++)
@@ -92,18 +98,12 @@ namespace Logistic_Regression_From_Scratch
 
         public static List<decimal> getColumn(Matrix M, int columnNumber)
         {
-            Console.WriteLine("Beginning");
-            printMatrix(M);
             List<decimal> resultsList = new List<decimal>(M.numRows);
             for (int rowNum = 0; rowNum < M.numRows; rowNum++)
             {
-                Console.WriteLine("Trying " + rowNum + " at " + columnNumber);
-                Console.WriteLine("Adding " + M.Data[rowNum][columnNumber]+ " at row number " + rowNum);
-                //resultsList.Add(M.Data[rowNum][columnNumber]);
+                resultsList.Add(M.Data[rowNum][columnNumber]);
                 resultsList.Add(0);
-                Console.WriteLine("Added");
             }
-            Console.WriteLine("Done");
             return resultsList;
         }
     }
