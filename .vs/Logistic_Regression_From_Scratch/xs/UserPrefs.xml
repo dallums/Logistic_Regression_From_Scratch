@@ -2,13 +2,13 @@
   <MonoDevelop.Ide.ItemProperties.Logistic__Regression__From__Scratch PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="35" Column="1" NotebookId="1" />
+      <File FileName="Program.cs" Line="28" Column="40" NotebookId="1" />
       <File FileName="MatrixMultiplication.cs" NotebookId="1" />
     </Files>
     <FloatingWindows>
       <FloatingWindow WindowId="1" X="0" Y="85" Width="1920" Height="1027">
         <Files>
-          <File FileName="Prediction.cs" Line="10" Column="10" />
+          <File FileName="Prediction.cs" Line="17" Column="58" />
           <File FileName="Training.cs" />
           <File FileName="Matrix.cs" />
         </Files>
