@@ -14,8 +14,7 @@ namespace Logistic_Regression_From_Scratch
             Matrix predictions = MatrixMultiplication.multiplyMatrices(inputData, model);
             for (int rowNum = 0; rowNum < model.numRows; rowNum++)
             {
-                // TODO: test this - will it work and replace the data ?
-                predictions.Data[0][0] = sigmoid(predictions.Data[0][0]);
+                predictions.Data[rowNum][0] = sigmoid(predictions.Data[rowNum][0]);
             }
             
             return predictions;

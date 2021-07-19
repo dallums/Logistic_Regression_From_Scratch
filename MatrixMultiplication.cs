@@ -81,21 +81,29 @@ namespace Logistic_Regression_From_Scratch
 
         public static Matrix addMatrices(Matrix M1, Matrix M2, bool subtract)
         {
-            // TODO: fill in
+            decimal subtractionCoefficient = subtract ? -1 : 1;
             Matrix resultMatrix = new Matrix(M1.numRows, M2.numColumns);
+            for(int rowNum = 0; rowNum < resultMatrix.numRows; rowNum++)
+            {
+                for (int colNum = 0; colNum < resultMatrix.numColumns; colNum++)
+                {
+                    resultMatrix.Data[rowNum][colNum] = M1.Data[rowNum][colNum] + subtractionCoefficient * M2.Data[rowNum][colNum];
+                }
+            }
             return resultMatrix;
-        }
-
-        public static Matrix getInverse(Matrix M)
-        {
-            // TODO: adapt this: https://docs.microsoft.com/en-us/archive/msdn-magazine/2016/july/test-run-matrix-inversion-using-csharp
-            return M;
         }
 
         public static Matrix getTranspose(Matrix M)
         {
-            // TODO: fill in
-            return M;
+            Matrix transposedM = new Matrix(rows: M.numColumns, columns: M.numRows);
+            for (int colNum = 0; colNum < M.numColumns; colNum++)
+            {
+                for (int rowNum = 0; rowNum < M.numRows; rowNum++)
+                {
+                    transposedM.Data[colNum][rowNum] = M.Data[rowNum][colNum];
+                }
+            }
+            return transposedM;
         }
     }
 }

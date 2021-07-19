@@ -29,12 +29,19 @@ namespace Logistic_Regression_From_Scratch
             Console.Write("Making predicitons...");
             Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel);
             Console.WriteLine("Predictions done");
+            Matrix.printMatrix(predictions);
+            Console.WriteLine("And now y:");
+            Matrix.printMatrix(y);
             
             // compute gradient = features * (predictions - actuals)
             Matrix predictionsMinusActuals = MatrixMultiplication.addMatrices(predictions, y, true);
+            Console.WriteLine("Predictions minus actuals...");
+            Matrix.printMatrix(predictionsMinusActuals);
             Matrix predictionsMinusActualsT = MatrixMultiplication.getTranspose(predictionsMinusActuals);
+            Console.WriteLine("Now transposed...");
+            Matrix.printMatrix(predictionsMinusActualsT);
             Console.WriteLine("Trying to compute gradient");
-            decimal? gradient = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], y.Data[0]);
+            decimal? gradient = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], MatrixMultiplication.getTranspose(y).Data[0]);
 
             // adjust weights
             for (int rowNum = 0; rowNum < currentModel.numRows; rowNum++)
