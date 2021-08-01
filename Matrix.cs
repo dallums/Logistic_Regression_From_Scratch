@@ -102,7 +102,6 @@ namespace Logistic_Regression_From_Scratch
             for (int rowNum = 0; rowNum < M.numRows; rowNum++)
             {
                 resultsList.Add(M.Data[rowNum][columnNumber]);
-                resultsList.Add(0);
             }
             return resultsList;
         }
