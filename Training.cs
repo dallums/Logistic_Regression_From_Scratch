@@ -17,7 +17,7 @@ namespace Logistic_Regression_From_Scratch
             return y;
         }
 
-        public Matrix runIteration(Matrix currentModel, Matrix trainingData, decimal learningRate, Matrix X, Matrix y)
+        public Matrix runIteration(Matrix currentModel, decimal coefficient, decimal learningRate, Matrix X, Matrix y)
         {
             /*
              * 1. Make predictions, i.e., one iteration
@@ -27,7 +27,7 @@ namespace Logistic_Regression_From_Scratch
 
             // get predictions
             Console.Write("Making predicitons...");
-            Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel);
+            Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel, coefficient: coefficient);
             Console.WriteLine("Predictions done");
             Matrix.printMatrix(predictions);
 
@@ -37,12 +37,16 @@ namespace Logistic_Regression_From_Scratch
             Matrix predictionsMinusActualsT = MatrixMultiplication.getTranspose(predictionsMinusActuals);
             Console.WriteLine("Now transposed...");
             Console.WriteLine("Trying to compute gradient");
-            decimal? gradient = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], MatrixMultiplication.getTranspose(y).Data[0]);
 
-            // adjust weights
+            // adjust weights and coefficient
             for (int rowNum = 0; rowNum < currentModel.numRows; rowNum++)
             {
-                currentModel.Data[rowNum][0] -= learningRate * ((gradient ?? 0) / currentModel.numRows);
+                // Getting rowNum_th column of training data to dot with
+                List<decimal> rowNumThColumnOfTrainingData = Matrix.getColumn(M: X, columnNumber: rowNum);
+                decimal? gradientForRowNumThWeight = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], rowNumThColumnOfTrainingData);
+
+                currentModel.Data[rowNum][0] -= learningRate * ((gradientForRowNumThWeight ?? 0) / currentModel.numRows);
+                coefficient -= learningRate * (predictionsMinusActuals.Data[rowNum][0] / currentModel.numRows);
             }
 
             iterationNumber++;

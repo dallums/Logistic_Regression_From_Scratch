@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{1DDA1EC1-FC88-456C-BC82-D734E821F141}|Default">
   <MonoDevelop.Ide.ItemProperties.Logistic__Regression__From__Scratch PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Training.cs">
     <Files>
-      <File FileName="Program.cs" Line="28" Column="40" NotebookId="1" />
-      <File FileName="MatrixMultiplication.cs" NotebookId="1" />
+      <File FileName="Program.cs" Line="29" Column="34" NotebookId="2" />
+      <File FileName="MatrixMultiplication.cs" NotebookId="2" />
     </Files>
     <FloatingWindows>
-      <FloatingWindow WindowId="1" X="0" Y="85" Width="1920" Height="1027">
+      <FloatingWindow WindowId="1" X="0" Y="110" Width="1920" Height="1027">
         <Files>
-          <File FileName="Prediction.cs" Line="17" Column="58" />
-          <File FileName="Training.cs" />
+          <File FileName="Prediction.cs" Line="12" Column="30" />
           <File FileName="Matrix.cs" />
+          <File FileName="Training.cs" Line="30" Column="56" NotebookId="1" />
         </Files>
       </FloatingWindow>
     </FloatingWindows>
@@ -19,7 +19,7 @@
         <State name="__root__">
           <Node name="Logistic_Regression_From_Scratch" expanded="True">
             <Node name="Logistic_Regression_From_Scratch" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Training.cs" selected="True" />
             </Node>
             <Node name="Logistic_Regression_From_Scratch.UTests" expanded="True" />
           </Node>
