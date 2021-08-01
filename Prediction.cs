@@ -4,9 +4,9 @@ namespace Logistic_Regression_From_Scratch
 {
     public class Prediction
     { 
-        public static decimal makeSinglePrediction(Matrix model, Matrix inputData)
+        public static double makeSinglePrediction(Matrix model, Matrix inputData)
         {
-            return sigmoid(MatrixMultiplication.multiplyMatrices(inputData, model).Data[0][0]);
+            return sigmoid((double) MatrixMultiplication.multiplyMatrices(inputData, model).Data[0][0]);
         }
 
         public static Matrix makePredictions(Matrix inputData, Matrix model, decimal coefficient)
@@ -14,7 +14,8 @@ namespace Logistic_Regression_From_Scratch
             Matrix predictions = MatrixMultiplication.multiplyMatrices(inputData, model);
             for (int rowNum = 0; rowNum < model.numRows; rowNum++)
             {
-                predictions.Data[rowNum][0] = sigmoid(predictions.Data[rowNum][0] + coefficient);
+                double castedInput = (double) predictions.Data[rowNum][0] + (double) coefficient;
+                predictions.Data[rowNum][0] = (decimal) sigmoid(castedInput);
             }
             
             return predictions;
@@ -39,9 +40,9 @@ namespace Logistic_Regression_From_Scratch
             return totalLogLoss / predictions.numRows;
         }
 
-        public static decimal sigmoid(decimal x)
+        public static double sigmoid(double x)
         {
-            return (decimal) (1 / (1 + Math.Exp((double) -x)));
+            return 1.0 / (1.0 + Math.Exp(-x));
         }
     }
 }
