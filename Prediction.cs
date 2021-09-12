@@ -12,10 +12,20 @@ namespace Logistic_Regression_From_Scratch
         public static Matrix makePredictions(Matrix inputData, Matrix model, decimal coefficient)
         {
             Matrix predictions = MatrixMultiplication.multiplyMatrices(inputData, model);
-            for (int rowNum = 0; rowNum < model.numRows; rowNum++)
+            Console.WriteLine("\n");
+            Matrix.printMatrix(inputData);
+            Console.WriteLine("\n");
+            Matrix.printMatrix(model);
+            Console.WriteLine("\n");
+            Matrix.printMatrix(predictions);
+  
+            for (int rowNum = 0; rowNum < inputData.numRows; rowNum++)
             {
                 double castedInput = (double) predictions.Data[rowNum][0] + (double) coefficient;
+                Console.WriteLine($"Row {rowNum}, castedInput: {castedInput}");
                 predictions.Data[rowNum][0] = (decimal) sigmoid(castedInput);
+                Console.WriteLine($"Prediction: {predictions.Data[rowNum][0]}");
+                
             }
             
             return predictions;
@@ -23,6 +33,10 @@ namespace Logistic_Regression_From_Scratch
 
         public static decimal logLoss(decimal prediction, decimal actual)
         {
+            if (prediction == 0)
+            {
+                return 0;
+            }
             decimal firstSummand = -(actual * (decimal) Math.Log((double) prediction));
             decimal secondSummand = (1 - actual) * (decimal) (Math.Log((double) (1 - prediction)));
             decimal logLossValue = firstSummand + secondSummand;
@@ -42,7 +56,9 @@ namespace Logistic_Regression_From_Scratch
 
         public static double sigmoid(double x)
         {
-            return 1.0 / (1.0 + Math.Exp(-x));
+            var result = 1.0 / (1.0 + Math.Exp(-x));
+            Console.WriteLine($"Sigmoid input {x}; result {result}");
+            return result;
         }
     }
 }

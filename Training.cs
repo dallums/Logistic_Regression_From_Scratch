@@ -30,9 +30,8 @@ namespace Logistic_Regression_From_Scratch
             Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel, coefficient: coefficient);
             Console.WriteLine("Predictions done");
             Matrix.printMatrix(predictions);
-            // TODO: fix
-            //decimal totalLogLoss = Prediction.computeAllLogLoss(predictions: predictions, actuals: y);
-            decimal totalLogLoss = 0m;
+            decimal totalLogLoss = Prediction.computeAllLogLoss(predictions: predictions, actuals: y);
+            //decimal totalLogLoss = 0m;
             Console.WriteLine($"Log-Loss after iteration {iterationNumber}: {totalLogLoss}");
 
             // compute gradient = features * (predictions - actuals)

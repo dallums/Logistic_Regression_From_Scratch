@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
 
 namespace Logistic_Regression_From_Scratch
 {
@@ -23,11 +24,12 @@ namespace Logistic_Regression_From_Scratch
             Matrix CSVasMatrix = CSVReader.ReadCSV(path: pathToPimaDataset,
                 numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
-            Matrix InitialWeights = Matrix.getMatrixOfZeros(rows: CSVasMatrix.numColumns-1, columns: 1);
+            Matrix InitialWeights = Matrix.getMatrixOfNearZeros(rows: CSVasMatrix.numColumns-1, columns: 1);
+            Matrix.printMatrix(InitialWeights);
             decimal InitialCoefficient = 0m;
 
             decimal learningRate = .01m;
-            int maxIterations = 2;
+            int maxIterations = 5;
             
             Training startTraining = new Training();
             startTraining.iterationNumber = 0;

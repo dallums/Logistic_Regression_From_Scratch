@@ -68,6 +68,28 @@ namespace Logistic_Regression_From_Scratch
             M.Data = data;
             return M;
         }
+        
+        public static Matrix getMatrixOfNearZeros(int rows, int columns)
+        {
+            Matrix M = new Matrix();
+            var rand = new Random();
+            M.numRows = rows;
+            M.numColumns = columns;
+            List<List<decimal>> data = new List<List<decimal>>(M.numRows);
+
+            for (int rowNum = 0; rowNum < rows; rowNum++)
+            {
+                // TODO: this is not working correctly - inserting extra column
+                data.Add(new List<decimal>(new decimal[M.numColumns]));
+                for (int colNum = 0; colNum < columns; colNum++)
+                {
+                    var item = new decimal(rand.NextDouble());
+                    data[rowNum][colNum] = item/100m;
+                }
+            }
+            M.Data = data;
+            return M;
+        }
 
         public static Matrix getWeightMatrix(int rows, int columns, List<List<decimal>> probabilities)
         {
