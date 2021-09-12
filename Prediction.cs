@@ -12,29 +12,25 @@ namespace Logistic_Regression_From_Scratch
         public static Matrix makePredictions(Matrix inputData, Matrix model, decimal coefficient)
         {
             Matrix predictions = MatrixMultiplication.multiplyMatrices(inputData, model);
-            /*
-            Console.WriteLine("\n");
-            Matrix.printMatrix(inputData);
-            Console.WriteLine("\n");
-            Matrix.printMatrix(model);
-            Console.WriteLine("\n");
-            Matrix.printMatrix(predictions);*/
-  
+            // TODO: after investigation, I think I just need to prepocess the data and the
+            // numbers should start to make sense. Mean 0 with unit variance or something like that.
+
             for (int rowNum = 0; rowNum < inputData.numRows; rowNum++)
             {
                 double castedInput = (double) predictions.Data[rowNum][0] + (double) coefficient;
-                //Console.WriteLine($"Row {rowNum}, castedInput: {castedInput}");
+                Console.WriteLine($"Row {rowNum}, castedInput: {castedInput}");
                 predictions.Data[rowNum][0] = (decimal) sigmoid(castedInput);
-                //Console.WriteLine($"Prediction: {predictions.Data[rowNum][0]}");
+                Console.WriteLine($"Prediction: {predictions.Data[rowNum][0]}");
                 
             }
             
+            Matrix.printMatrix(predictions);
             return predictions;
         }
 
         public static decimal logLoss(decimal prediction, decimal actual)
         {
-            if (prediction == 0)
+            if (prediction == 0 || prediction == 1)
             {
                 return 0;
             }

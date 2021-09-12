@@ -26,35 +26,37 @@ namespace Logistic_Regression_From_Scratch
              */
 
             // get predictions
-            Console.Write("Making predicitons...");
+            //Console.Write("Making predicitons...");
             Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel, coefficient: coefficient);
-            Console.WriteLine("Predictions done");
+            //Console.WriteLine("Predictions done");
             decimal totalLogLoss = Prediction.computeAllLogLoss(predictions: predictions, actuals: y);
             //decimal totalLogLoss = 0m;
             Console.WriteLine($"Log-Loss after iteration {iterationNumber}: {totalLogLoss}");
 
             // compute gradient = features * (predictions - actuals)
             Matrix predictionsMinusActuals = MatrixMultiplication.addMatrices(predictions, y, true);
-            Console.WriteLine("Predictions minus actuals...");
+            //Console.WriteLine("Predictions minus actuals...");
             Matrix predictionsMinusActualsT = MatrixMultiplication.getTranspose(predictionsMinusActuals);
-            Console.WriteLine("Now transposed...");
-            Console.WriteLine("Trying to compute gradient");
+            //Matrix.printMatrix(predictionsMinusActualsT);
+            //Console.WriteLine("Now transposed...");
+            //Console.WriteLine("Trying to compute gradient");
 
             // adjust weights and coefficient
             for (int rowNum = 0; rowNum < currentModel.numRows; rowNum++)
             {
                 // Getting rowNum_th column of training data to dot with
                 List<decimal> rowNumThColumnOfTrainingData = Matrix.getColumn(M: X, columnNumber: rowNum);
-                // TODO: I think the gradient is computed incorrectly / or something is causing it to blow up
                 decimal? gradientForRowNumThWeight = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], rowNumThColumnOfTrainingData);
-                Console.WriteLine($"Gradient: {gradientForRowNumThWeight}");
-                currentModel.Data[rowNum][0] -= learningRate * ((gradientForRowNumThWeight ?? 0) / currentModel.numRows);
-                coefficient -= learningRate * (predictionsMinusActuals.Data[rowNum][0] / currentModel.numRows);
-                Console.WriteLine($"New coefficient: {coefficient}");
+                //Console.WriteLine($"Gradient: {gradientForRowNumThWeight}");
+                currentModel.Data[rowNum][0] -= learningRate * ((gradientForRowNumThWeight ?? 0) / X.numRows);
+                coefficient -= learningRate * (predictionsMinusActuals.Data[rowNum][0] / X.numRows);
+                //Console.WriteLine($"New coefficient: {coefficient}");
             }
+            Console.WriteLine("New model:");
+            Matrix.printMatrix(currentModel);
 
             iterationNumber++;
-            Console.WriteLine("Finished iteration " + iterationNumber);
+            //Console.WriteLine("Finished iteration " + iterationNumber);
             return currentModel;
         }
     }

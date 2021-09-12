@@ -25,11 +25,11 @@ namespace Logistic_Regression_From_Scratch
                 numberOfColumns: columnNames.Length,
                 columnNames: columnNames);
             Matrix InitialWeights = Matrix.getMatrixOfNearZeros(rows: CSVasMatrix.numColumns-1, columns: 1);
-            Matrix.printMatrix(InitialWeights);
-            decimal InitialCoefficient = 0m;
+            //Matrix.printMatrix(InitialWeights);
+            decimal InitialCoefficient = 1m;
 
-            decimal learningRate = .01m;
-            int maxIterations = 5;
+            decimal learningRate = .001m;
+            int maxIterations = 2;
             
             Training startTraining = new Training();
             startTraining.iterationNumber = 0;
