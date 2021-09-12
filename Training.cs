@@ -29,7 +29,6 @@ namespace Logistic_Regression_From_Scratch
             Console.Write("Making predicitons...");
             Matrix predictions = Prediction.makePredictions(inputData: X, model: currentModel, coefficient: coefficient);
             Console.WriteLine("Predictions done");
-            Matrix.printMatrix(predictions);
             decimal totalLogLoss = Prediction.computeAllLogLoss(predictions: predictions, actuals: y);
             //decimal totalLogLoss = 0m;
             Console.WriteLine($"Log-Loss after iteration {iterationNumber}: {totalLogLoss}");
@@ -46,10 +45,12 @@ namespace Logistic_Regression_From_Scratch
             {
                 // Getting rowNum_th column of training data to dot with
                 List<decimal> rowNumThColumnOfTrainingData = Matrix.getColumn(M: X, columnNumber: rowNum);
+                // TODO: I think the gradient is computed incorrectly / or something is causing it to blow up
                 decimal? gradientForRowNumThWeight = MatrixMultiplication.dotProduct(predictionsMinusActualsT.Data[0], rowNumThColumnOfTrainingData);
-
+                Console.WriteLine($"Gradient: {gradientForRowNumThWeight}");
                 currentModel.Data[rowNum][0] -= learningRate * ((gradientForRowNumThWeight ?? 0) / currentModel.numRows);
                 coefficient -= learningRate * (predictionsMinusActuals.Data[rowNum][0] / currentModel.numRows);
+                Console.WriteLine($"New coefficient: {coefficient}");
             }
 
             iterationNumber++;

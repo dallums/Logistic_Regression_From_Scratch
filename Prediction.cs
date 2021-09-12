@@ -12,19 +12,20 @@ namespace Logistic_Regression_From_Scratch
         public static Matrix makePredictions(Matrix inputData, Matrix model, decimal coefficient)
         {
             Matrix predictions = MatrixMultiplication.multiplyMatrices(inputData, model);
+            /*
             Console.WriteLine("\n");
             Matrix.printMatrix(inputData);
             Console.WriteLine("\n");
             Matrix.printMatrix(model);
             Console.WriteLine("\n");
-            Matrix.printMatrix(predictions);
+            Matrix.printMatrix(predictions);*/
   
             for (int rowNum = 0; rowNum < inputData.numRows; rowNum++)
             {
                 double castedInput = (double) predictions.Data[rowNum][0] + (double) coefficient;
-                Console.WriteLine($"Row {rowNum}, castedInput: {castedInput}");
+                //Console.WriteLine($"Row {rowNum}, castedInput: {castedInput}");
                 predictions.Data[rowNum][0] = (decimal) sigmoid(castedInput);
-                Console.WriteLine($"Prediction: {predictions.Data[rowNum][0]}");
+                //Console.WriteLine($"Prediction: {predictions.Data[rowNum][0]}");
                 
             }
             
@@ -57,7 +58,7 @@ namespace Logistic_Regression_From_Scratch
         public static double sigmoid(double x)
         {
             var result = 1.0 / (1.0 + Math.Exp(-x));
-            Console.WriteLine($"Sigmoid input {x}; result {result}");
+            //Console.WriteLine($"Sigmoid input {x}; result {result}");
             return result;
         }
     }

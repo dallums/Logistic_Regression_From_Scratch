@@ -79,7 +79,6 @@ namespace Logistic_Regression_From_Scratch
 
             for (int rowNum = 0; rowNum < rows; rowNum++)
             {
-                // TODO: this is not working correctly - inserting extra column
                 data.Add(new List<decimal>(new decimal[M.numColumns]));
                 for (int colNum = 0; colNum < columns; colNum++)
                 {
